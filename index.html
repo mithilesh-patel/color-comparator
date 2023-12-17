@@ -1,25 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Color Comparator
-    </title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Comparator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div class="heading">
-        <H1>COLOR COMPARATOR</H1>
+      <h1>COLOR COMPARATOR</h1>
     </div>
-    <div class="pallette">
-        <div class="box">
-            hello
-
-        </div>
-
+    <div class="pallette" id="pallette">
+      <div class="box" id="box1">
+        <input type="text" name="color1" id="color1" onkeyup="colorme('box1')" />
+      </div>
+    </div>
+    <div class="control-panel">
+      <button onclick="addbox()">Add +1 more</button>
     </div>
 
-    
-</body>
+    <script>
+      function addbox() {
+        var num = document.getElementsByClassName("box").length + 1;
+        var newbox = document.createElement("div");
+        newbox.className = "box";
+        newbox.id = "box" + num;
+        newbox.innerHTML="<input type=\"text\" name=\"color"+num+"\" id=\"color"+num+"\" onkeyup=\"colorme('box"+num+"')\" />"
+
+        document.getElementById("pallette").appendChild(newbox);
+      }
+
+      function colorme(boxID) {
+        // console.log(document.getElementById("color").value);
+        // console.log(boxID[3]);
+
+        var bgcolor = "#" + document.getElementById("color"+boxID[3]).value;
+        document.getElementById(boxID).style.backgroundColor = bgcolor;
+      }
+    </script>
+  </body>
 </html>
